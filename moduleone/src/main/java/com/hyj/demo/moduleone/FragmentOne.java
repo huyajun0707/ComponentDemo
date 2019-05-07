@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.hyj.demo.component.constant.RouterConstant;
+
 
 /**
  * =========================================================
@@ -17,10 +20,9 @@ import android.view.ViewGroup;
  * @description :
  * =========================================================
  */
+@Route(path = RouterConstant.MODULE_ONE_FRAGMENT_ONE)
 public class FragmentOne extends Fragment {
     private View rootView;
-
-
     public FragmentOne() {
     }
 

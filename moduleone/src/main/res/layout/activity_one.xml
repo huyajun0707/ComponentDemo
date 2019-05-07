@@ -13,4 +13,10 @@
         android:layout_height="wrap_content"
         android:text="跳转二" />
 
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.hyj.demo.moduleone.FragmentOne"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_fragment_one" />
 </LinearLayout>

@@ -12,5 +12,7 @@ package com.hyj.demo.component.constant;
 public class RouterConstant {
     public static final String MODULE_ONE = "/moduleone/mainone";
     public static final String MODULE_TWO = "/moduletwo/maintwo";
+    public static final String MODULE_ONE_FRAGMENT_ONE = "/moduleone/fragmentone";
+    public static final String MODULE_TWO_FRAGMENT_TWO = "/moduletwo/fragmenttwo";
 
 }

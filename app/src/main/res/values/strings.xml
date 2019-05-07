@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ComponentDemo</string>
+    <string name="module_one">module_one</string>
+    <string name="module_two">module_two</string>
 </resources>
