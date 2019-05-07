@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyj.demo.component.constant.RouterConstant;
-import com.hyj.demo.component.routeservice.IService;
+import com.hyj.demo.component.routeservice.ModuleOneService;
 
 @Route(path = RouterConstant.MODULE_TWO)
 public class TwoActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,8 +29,8 @@ public class TwoActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btGet) {
-            IService impl = ARouter.getInstance().navigation(IService.class);
-            tvTitle.setText(impl.setParam("哈哈哈哈"));
+            ModuleOneService impl = ARouter.getInstance().navigation(ModuleOneService.class);
+            tvTitle.setText(impl.setParamToMoudleOne("哈哈哈哈!我是MoudleTwo,你能收到我的消息吗"));
         }
     }
 }

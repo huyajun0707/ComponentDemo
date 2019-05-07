@@ -13,6 +13,15 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyj.demo.component.constant.RouterConstant;
 import com.hyj.demo.component.utils.FragmentUtil;
 
+/**
+ * =========================================================
+ *
+ * @author :   HuYajun     <13426236872@163.com>
+ * @version :
+ * @date :   2019/5/7 11:07
+ * @description :   程序主入口，可指定跳转Activity  或者  嵌入模块中的Fragment
+ * =========================================================
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TabLayout
         .OnTabSelectedListener {
     private Button btOne, btTwo;
