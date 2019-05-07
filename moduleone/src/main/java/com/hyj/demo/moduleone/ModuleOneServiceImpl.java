@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.auto.service.AutoService;
+import com.hyj.demo.component.routeservice.IServiceLoader;
 import com.hyj.demo.component.routeservice.ModuleOneService;
 import com.hyj.demo.component.routeservice.ModuleTwoService;
 

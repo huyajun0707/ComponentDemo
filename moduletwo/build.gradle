@@ -42,7 +42,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    resourcePrefix 'moudle_two_prefix_'
 }
 
 dependencies {

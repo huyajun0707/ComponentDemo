@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hyj.demo.component.constant.RouterConstant;
+import com.hyj.demo.component.routeservice.IServiceLoader;
 import com.hyj.demo.component.utils.FragmentUtil;
 
 /**
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private Fragment fragmentOne;
     private Fragment fragmentTwo;
+    private StringBuilder mStringBuilder;
+    private TextView tvDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById();
         initTabLayout();
+        initData();
+    }
+
+    private void initData() {
+        mStringBuilder = new StringBuilder();
     }
 
     private void initTabLayout() {
@@ -50,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .MODULE_ONE_FRAGMENT_ONE).navigation();
         fragmentTwo = (Fragment) ARouter.getInstance().build(RouterConstant
                 .MODULE_TWO_FRAGMENT_TWO).navigation();
-        Log.d(TAG, "initTabLayout: " + fragmentOne.getClass());
         fragmentUtil.addItem(new FragmentUtil.OperationInfo(this, getString(R.string.module_one),
                 fragmentOne.getClass()));
         fragmentUtil.addItem(new FragmentUtil.OperationInfo(this, getString(R.string.module_two),
@@ -65,16 +73,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btTwo.setOnClickListener(this);
         tlMenu = findViewById(R.id.tlMenu);
         tlMenu.addOnTabSelectedListener(this);
+        tvDisplay = findViewById(R.id.tvDisplay);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btStartOne:
-                ARouter.getInstance().build(RouterConstant.MODULE_ONE).navigation();
+//                ARouter.getInstance().build(RouterConstant.MODULE_ONE).navigation();
+                loadModule();
                 break;
             case R.id.btStartTwo:
-                ARouter.getInstance().build(RouterConstant.MODULE_TWO).navigation();
+
+//                ARouter.getInstance().build(RouterConstant.MODULE_TWO).navigation();
                 break;
         }
     }
@@ -101,5 +112,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    private void loadModule() {
+        Log.d(TAG, "loadModule: ");
+        String display = "";
+        ServiceLoaderFactory.getInstance().loadService(IServiceLoader.class);
+        while (ServiceLoaderFactory.getInstance().hasNextService()) {
+            display = ServiceLoaderFactory.getInstance().getService()
+                    .setParamToMoudle("00");
+            Log.d(TAG, "loadModule: " + display);
+            mStringBuilder.append(display).append("\n");
+        }
+        tvDisplay.setText(mStringBuilder.toString());
     }
 }

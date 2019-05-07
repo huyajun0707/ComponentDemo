@@ -14,6 +14,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
+                includeCompileClasspath = true
             }
         }
     }
@@ -23,6 +24,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //解决模块间资源名称冲突
+    resourcePrefix 'app_prefix_'
 }
 
 dependencies {
@@ -36,7 +39,7 @@ dependencies {
 configurations.all {
     resolutionStrategy.eachDependency { details ->
         if (details.requested.group == 'com.android.support'
-                && !details.requested.name.contains('multidex') ) {
+                && !details.requested.name.contains('multidex')) {
             details.useVersion "27.1.1"
         }
     }
